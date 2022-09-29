@@ -6,6 +6,11 @@ import {environment} from "../environments/environment";
 import {AppRoutingModule} from "./app-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 
+//Ngrx
+import {StoreModule} from "@ngrx/store";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {appReducers} from "./app.reducer";
+
 //AngularFire
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
@@ -46,6 +51,11 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+          maxAge: 25, // Retains last 25 states
+          logOnly: environment.production, // Restrict extension to log-only mode
+        }),
   ],
   providers: [],
   bootstrap: [AppComponent]
