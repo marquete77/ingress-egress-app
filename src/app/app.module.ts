@@ -5,6 +5,7 @@ import {environment} from "../environments/environment";
 //Modules
 import {AppRoutingModule} from "./app-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgChartsModule} from "ng2-charts";
 
 //Ngrx
 import {StoreModule} from "@ngrx/store";
@@ -28,6 +29,7 @@ import { SharedComponent } from './shared/shared.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { OrderIngressEgressPipe } from './pipes/order-ingress-egress.pipe';
 
 
 @NgModule({
@@ -43,6 +45,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    OrderIngressEgressPipe,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    NgChartsModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
           maxAge: 25, // Retains last 25 states
