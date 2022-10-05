@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AppState} from "../../app.reducer";
+import {AppStateWithIngressEgress} from "../ingress-egress.reducer";
 import {Subscription} from "rxjs";
 import {IngressEgressModel} from "../../models/ingress-egress.model";
 import { ChartData, ChartEvent, ChartType } from 'chart.js';
+
 
 @Component({
   selector: 'app-statistics',
@@ -29,11 +30,11 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   public doughnutChartType: ChartType = 'doughnut';
 
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppStateWithIngressEgress>) { }
 
   ngOnInit(): void {
     this.ingressEgressSubs = this.store.select('ingressEgress')
-      .subscribe(({items}) => this.generateStatistics(items));
+      .subscribe(({items}: any) => this.generateStatistics(items));
   }
 
   ngOnDestroy() {
