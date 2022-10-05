@@ -7,6 +7,7 @@ import {IngressEgressService} from "../../services/ingress-egress.service";
 import Swal from "sweetalert2";
 
 
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
